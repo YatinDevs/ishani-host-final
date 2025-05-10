@@ -23,7 +23,7 @@ const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [heroRes, docsRes] = await Promise.all([
+        const [heroRes] = await Promise.all([
           axios.get("https://ishanib.demovoting.com/api/herocontent"),
         ]);
         setHeroContent(heroRes.data || []);

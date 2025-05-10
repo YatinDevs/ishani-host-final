@@ -171,7 +171,7 @@ const FactoryDisplayOutlet = () => {
               <div className="mt-8 space-y-4">
                 <motion.a
                   onClick={()=>{navigate(`/contactus`)}}
-                  className="inline-flex items-center justify-center gap-2 bg-yellow-600 hover:bg-yellow-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors w-full sm:w-auto"
+                  className="inline-flex items-center justify-center gap-2 bg-yellow-600 hover:bg-yellow-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors w-full sm:w-auto cursor-default"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -186,7 +186,7 @@ const FactoryDisplayOutlet = () => {
                 </div>
 
                 <a
-                  href={`tel:${sectionData?.contact_number || "+919421800066"}`}
+                  href={`tel:${sectionData?.contact_number}`}
                   className="flex items-center justify-center gap-2 text-gray-700 hover:text-yellow-600 font-medium transition-colors"
                 >
                   <Phone className="w-5 h-5" />

@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const WhoWeAre = () => {
   const [sectionData, setSectionData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -115,13 +118,13 @@ const WhoWeAre = () => {
               whileHover={{ x: 5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <a
-                href="/about"
-                className="inline-flex items-center text-yellow-600 hover:text-yellow-700 font-medium group transition-colors"
+              <button
+                onClick={() => navigate('/aboutus')}
+                className="inline-flex items-center text-yellow-600 hover:text-yellow-700 font-medium group transition-colors cursor-pointer"
               >
                 Discover Our Story
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
+              </button>
             </motion.div>
           </motion.div>
 

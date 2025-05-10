@@ -288,7 +288,7 @@ const CategoryHeader = ({ category, activeFilter, categories, filteredProducts }
         transition={{ duration: 0.5, delay: 0.3 }}
       />
       <p className="text-gray-600 max-w-2xl mb-4">
-        {currentCategory?.description || "Premium quality products for Indian homes"}
+        {currentCategory?.description || "Explore our complete range of premium doors, windows, and security solutions"}
       </p>
       <p className="text-gray-500 text-sm">
         {category
@@ -296,7 +296,7 @@ const CategoryHeader = ({ category, activeFilter, categories, filteredProducts }
             ? currentCategory.collection_text_template
               .replace('{category}', currentCategory.name?.toLowerCase())
               .replace('{count}', filteredProducts.length)
-              .replace('{descriptor}', currentCategory.product_descriptor || 'products')
+              .replace('{descriptor}', currentCategory.product_descriptor.toLowerCase() || 'products')
             : `Browse our ${currentCategory.name?.toLowerCase()} collection`
           )
           : (currentCategory?.homepage_text || "Trusted by 5000+ homeowners across India since 2010")

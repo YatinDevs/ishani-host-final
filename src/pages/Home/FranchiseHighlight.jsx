@@ -49,7 +49,7 @@ const FranchiseHighlight = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-yellow-700 mb-3">
-            Become an Ishani Enterprises Franchise Partner
+            Become an Ishani Enterprises Partner
           </h2>
           <motion.div
             className="h-1 w-16 bg-yellow-500 mx-auto mb-6"
@@ -100,10 +100,10 @@ const FranchiseHighlight = () => {
             <div className="text-center md:text-left md:flex items-center justify-between gap-8">
               <div>
                 <h3 className="text-2xl md:text-3xl font-bold mb-3">
-                  Ready to Start Your Franchise Journey?
+                  Ready to Start Your Partnership Journey?
                 </h3>
                 <p className="text-yellow-100">
-                  Limited franchise opportunities available in select
+                  Limited partnership opportunities available in select
                   Maharashtra districts
                 </p>
               </div>
@@ -113,7 +113,7 @@ const FranchiseHighlight = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Apply for Franchise
+                Apply for Partnership
                 <ArrowRight className="w-5 h-5" />
               </motion.a>
             </div>
