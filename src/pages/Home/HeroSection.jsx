@@ -14,10 +14,8 @@ const HeroSection = () => {
   const [heroContent, setHeroContent] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [documents, setDocuments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isDownloading, setIsDownloading] = useState(false);
 const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,7 +26,7 @@ const navigate = useNavigate();
         ]);
         setHeroContent(heroRes.data || []);
       } catch (err) {
-        console.error("Error fetching data:", err);
+        // console.error("Error fetching data:", err);
         setError("Failed to load content. Please try again later.");
         setHeroContent([]);
       } finally {
@@ -112,33 +110,9 @@ const navigate = useNavigate();
   }
 
   const currentItem = heroContent[currentIndex] || {};
+
   const { image_url, title, description, ctaHighlight } = currentItem;
 
-  const handleDownload = async () => {
-    try {
-      setIsDownloading(true);
-      const response = await axios.get("http://localhost:8000/api/document", {
-        responseType: "blob", // Important for file downloads
-      });
-
-      // Create blob URL for the file
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "Ishani-Enterprises-Catalog.pdf");
-      document.body.appendChild(link);
-      link.click();
-
-      // Clean up
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error("Download failed:", error);
-      alert("Failed to download catalog. Please try again.");
-    } finally {
-      setIsDownloading(false);
-    }
-  };
   return (
     <>
       {/* Hero Section */}
@@ -257,17 +231,7 @@ const navigate = useNavigate();
                 <DoorOpen className="w-5 h-5" />
                 Explore Doors
               </motion.button>
-{/* 
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center gap-2 bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition font-semibold w-full"
-                onClick={handleDownload}
-                disabled={isDownloading}
-              >
-                <Download className="w-5 h-5" />
-                {isDownloading ? "Downloading..." : "Download Catalog"}
-              </motion.button> */}
+
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

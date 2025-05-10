@@ -109,7 +109,7 @@ const FranchiseHighlight = () => {
               </div>
               <motion.a
                 onClick={()=>{navigate(`/ishani-franchise`)}}
-                className="mt-6 md:mt-0 inline-flex items-center justify-center gap-2 bg-white text-yellow-700 hover:bg-gray-100 font-bold px-8 py-4 rounded-lg transition-all"
+                className="mt-6 md:mt-0 inline-flex items-center justify-center gap-2 bg-white text-yellow-700 hover:bg-gray-100 font-bold px-8 py-4 rounded-lg transition-all cursor-pointer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >

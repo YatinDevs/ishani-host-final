@@ -19,7 +19,7 @@ const FactoryDisplayOutlet = () => {
         );
         setSectionData(response.data?.data || null);
       } catch (error) {
-        console.error("Error fetching factoryoutlet:", error);
+        // console.error("Error fetching factoryoutlet:", error);
         setError("Failed to load factory outlet information");
         setSectionData(null);
       } finally {

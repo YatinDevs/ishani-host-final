@@ -54,7 +54,7 @@ const AboutUsPage = () => {
         setCompanyData(response.data);
         setHtmlContent(response.data.manufacturing_facility_description)
       } catch (error) {
-        console.error("Error fetching company information:", error);
+        // console.error("Error fetching company information:", error);
       } finally {
         setLoading(false);
       }

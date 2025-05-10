@@ -19,11 +19,11 @@ const GallerySection = () => {
           axios.get("https://ishanib.demovoting.com/api/gallery"),
           axios.get("https://ishanib.demovoting.com/api/testimonials/featured"),
         ]);
-        console.log(galleryResponse, testimonialsResponse);
+        // console.log(galleryResponse, testimonialsResponse);
         setGalleryImage(galleryResponse.data.data);
         setTestimonials(testimonialsResponse.data.data);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        // console.error("Error fetching data:", error);
       } finally {
         setLoading(false);
       }

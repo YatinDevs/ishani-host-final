@@ -58,12 +58,13 @@ const navItems = [
   },
   {
     label: "VISIT FACTORY OUTLET",
-    // submenu: [
-    //   { label: "Showroom Images", path: "/factory-outlet/showroom-images" },
-    //   { label: "Map & Directions", path: "/factory-outlet/map" },
-    //   { label: "Book a Visit", path: "/factory-outlet/book-visit" },
-    // ],
-    path: "/factory-outlet",
+    submenu: [
+      { label: "Showroom Images", path: "/factory-outlet/#showroom-images" },
+      { label: "Map & Directions", path: "/factory-outlet/#map" },
+      { label: "Book a Visit", path: "/factory-outlet/#book-visit" },
+     
+    ],
+    // path: "/factory-outlet",
   },
   {
     label: "FRANCHISE OPPORTUNITY",

@@ -17,7 +17,7 @@ const WhoWeAre = () => {
         const response = await axios.get("https://ishanib.demovoting.com/api/whoweare");
         setSectionData(response.data?.data || null);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        // console.error("Error fetching data:", error);
         setError("Failed to load content. Please try again later.");
         setSectionData(null);
       } finally {
@@ -94,7 +94,7 @@ const WhoWeAre = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            {sectionData?.section_header || "Who We Are"}
+            {sectionData?.section_header || ""}
           </h2>
           <div className="w-20 h-1 bg-yellow-500 mx-auto"></div>
         </motion.div>
@@ -166,14 +166,14 @@ const WhoWeAre = () => {
               <div className="flex items-center space-x-4">
                 <div className="text-center">
                   <p className="text-2xl font-bold text-yellow-600">
-                    {sectionData?.years_experience || "10"}+
+                    {sectionData?.years_experience || ""}+
                   </p>
                   <p className="text-xs text-gray-600">Years Experience</p>
                 </div>
                 <div className="h-8 w-px bg-gray-300"></div>
                 <div className="text-center">
                   <p className="text-2xl font-bold text-yellow-600">
-                    {sectionData?.projects_completed || "500"}+
+                    {sectionData?.projects_completed || ""}+
                   </p>
                   <p className="text-xs text-gray-600">Projects Completed</p>
                 </div>
