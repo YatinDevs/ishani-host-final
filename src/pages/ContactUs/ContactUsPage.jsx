@@ -45,7 +45,7 @@ const ContactUsPage = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get("https://ishanib.demovoting.com/api/contact");
-        console.log(response);
+        // console.log(response);
         setContactData(response.data || null);
       } catch (error) {
         console.error("Error fetching contact information:", error);
@@ -379,10 +379,10 @@ const ContactUsPage = () => {
                 <div>
                   <h3 className="font-semibold text-gray-800">Phone</h3>
                   <p className="text-gray-600">
-                    {contactData?.tel_number || "Not provided"}
+                    {contactData?.tel_number || ""}
                   </p>
                   <p className="text-gray-600">
-                    {contactData?.mobile_number || "Not provided"}
+                    {contactData?.mobile_number || ""}
                   </p>
                 </div>
               </div>
@@ -392,7 +392,7 @@ const ContactUsPage = () => {
                 <div>
                   <h3 className="font-semibold text-gray-800">Email</h3>
                   <p className="text-gray-600">
-                    {contactData?.email || "Not provided"}
+                    {contactData?.email || ""}
                   </p>
                 </div>
               </div>
@@ -402,7 +402,7 @@ const ContactUsPage = () => {
                 <div>
                   <h3 className="font-semibold text-gray-800">WhatsApp</h3>
                   <p className="text-gray-600">
-                    {contactData?.whatsapp_number || "Not provided"}
+                    {contactData?.whatsapp_number || ""}
                   </p>
                 </div>
               </div>

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
 import { IoLocationOutline, IoCallOutline } from "react-icons/io5";
 import { motion } from "framer-motion";
 import { navlogo } from "../../public/assets";
+import axios from "axios";
 
 const Footer = () => {
   const socialIcons = [
@@ -12,7 +13,34 @@ const Footer = () => {
     { icon: FaYoutube, label: "YouTube" },
     { icon: FaInstagram, label: "Instagram" },
   ];
+  const [contactData, setContactData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("https://ishanib.demovoting.com/api/contact");
+        // console.log(response);
+        setContactData(response.data || null);
+      } catch (error) {
+        console.error("Error fetching contact information:", error);
+        setContactData(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+   if (loading) {
+    return (
+      <div className="h-[600px] flex items-center justify-center text-gray-500">
+        Loading...
+      </div>
+    );
+  }
   return (
     <motion.footer
       initial={{ opacity: 0, y: 50 }}
@@ -45,22 +73,22 @@ const Footer = () => {
               <span>
                 <strong>Corp. Office:</strong>
                 <br />
-                Ishani Enterprises
+              {contactData?.corporate_address_line1}
                 <br />
-                G-8, Prestige Bytco Business Center,
+               {contactData?.corporate_address_line2}
                 <br />
-                Bytco Point, Nasik Road,
+                {contactData?.corporate_address_line3}
                 <br />
-                Nasik - 422101
+               {contactData?.corporate_address_line4}
               </span>
             </li>
             <li className="flex items-center gap-2">
               <MdOutlineEmail size={20} className="text-yellow-500" />
-              ishanient@gmail.com
+               {contactData?.email || ""}
             </li>
             <li className="flex items-center gap-2">
               <IoCallOutline size={20} className="text-yellow-500" />
-              +91 253 2465140 | +91 94222 55572
+              {contactData?.tel_number || ""}  |  {contactData?.mobile_number || ""}
             </li>
           </ul>
         </motion.div>
@@ -100,7 +128,7 @@ const Footer = () => {
       {/* Footer Bottom */}
       <div className="mt-12 text-center text-sm text-gray-600 border-t border-gray-300 pt-4">
         <p>
-          © 2016{" "}
+          © 2025{" "}
           <span className="font-semibold text-gray-800">
             Ishani Enterprises
           </span>
