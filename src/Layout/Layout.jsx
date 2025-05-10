@@ -10,6 +10,25 @@ function Layout() {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const [contactData, setContactData] = useState(null);
+ 
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("https://ishanib.demovoting.com/api/contact");
+        // console.log(response);
+        setContactData(response.data || null);
+      } catch (error) {
+        console.error("Error fetching contact information:", error);
+        setContactData(null);
+      } 
+    };
+
+    fetchData();
+  }, []);
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -37,7 +56,7 @@ function Layout() {
         </div>
       </div>
 
-      <Footer />
+      <Footer contactData={contactData} />
     </>
   );
 }

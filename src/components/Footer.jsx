@@ -6,41 +6,14 @@ import { motion } from "framer-motion";
 import { navlogo } from "../../public/assets";
 import axios from "axios";
 
-const Footer = () => {
+const Footer = ({contactData}) => {
   const socialIcons = [
     { icon: FaFacebookF, label: "Facebook" },
     { icon: FaTwitter, label: "Twitter" },
     { icon: FaYoutube, label: "YouTube" },
     { icon: FaInstagram, label: "Instagram" },
   ];
-  const [contactData, setContactData] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("https://ishanib.demovoting.com/api/contact");
-        // console.log(response);
-        setContactData(response.data || null);
-      } catch (error) {
-        console.error("Error fetching contact information:", error);
-        setContactData(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-   if (loading) {
-    return (
-      <div className="h-[600px] flex items-center justify-center text-gray-500">
-        Loading...
-      </div>
-    );
-  }
+ 
   return (
     <motion.footer
       initial={{ opacity: 0, y: 50 }}
