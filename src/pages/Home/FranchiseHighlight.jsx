@@ -49,7 +49,7 @@ const FranchiseHighlight = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-yellow-700 mb-3">
-            Become an Ishani Enterprises Franchise Partner
+            Become an Ishani Enterprises Partner
           </h2>
           <motion.div
             className="h-1 w-16 bg-yellow-500 mx-auto mb-6"
