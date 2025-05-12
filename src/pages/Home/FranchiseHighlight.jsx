@@ -10,10 +10,9 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-
 const FranchiseHighlight = () => {
   const navigate = useNavigate();
-  
+
   const benefits = [
     {
       icon: <TrendingUp className="w-6 h-6" />,
@@ -60,7 +59,7 @@ const FranchiseHighlight = () => {
           />
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Join Maharashtra's fastest growing premium doors and windows network
-            with our lucrative franchise opportunity
+            with our lucrative Partnership opportunity
           </p>
         </motion.div>
 
@@ -107,15 +106,17 @@ const FranchiseHighlight = () => {
                   Maharashtra districts
                 </p>
               </div>
-              <motion.a
-                onClick={()=>{navigate(`/ishani-franchise`)}}
+              <a
+                onClick={() => {
+                  navigate(`/ishani-partnership`);
+                }}
                 className="mt-6 md:mt-0 inline-flex items-center justify-center gap-2 bg-white text-yellow-700 hover:bg-gray-100 font-bold px-8 py-4 rounded-lg transition-all"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
                 Apply for Partnership
                 <ArrowRight className="w-5 h-5" />
-              </motion.a>
+              </a>
             </div>
           </div>
 

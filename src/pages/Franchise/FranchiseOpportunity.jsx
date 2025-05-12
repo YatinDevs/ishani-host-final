@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import DOMPurify from 'dompurify';
+import DOMPurify from "dompurify";
 import parse, { domToReact } from "html-react-parser";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -8,16 +8,15 @@ import { motion } from "framer-motion";
 import { fadeIn, staggerContainer, zoomIn } from "../../utils/motion";
 
 const FranchisePage = () => {
-
   const [formData, setFormData] = useState({
-    first_name: '',
-    last_name: '',
-    email: '',
-    phone: '',
-    preferred_city: '',
-    investment_capacity: '10-20 lakhs',
-    business_experience: '',
-    consent_marketing: false
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone: "",
+    preferred_city: "",
+    investment_capacity: "10-20 lakhs",
+    business_experience: "",
+    consent_marketing: false,
   });
 
   const [franchiseSP, setFranchiseSP] = useState({});
@@ -32,7 +31,7 @@ const FranchisePage = () => {
           axios.get("https://ishanib.demovoting.com/api/franchise"),
           axios.get("https://ishanib.demovoting.com/api/franchisetestimonials"),
         ]);
-        console.log(franchiseResponse, testimonialsResponse);
+        // console.log(franchiseResponse, testimonialsResponse);
         setFranchiseSP(franchiseResponse.data.data);
         setTestimonials(testimonialsResponse.data.data);
       } catch (error) {
@@ -79,69 +78,72 @@ const FranchisePage = () => {
     return parse(sanitized, options);
   };
 
-
-
-
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitStatus('submitting');
+    setSubmitStatus("submitting");
     setSubmitError(null);
 
     try {
-      const response = await axios.post('https://ishanib.demovoting.com/api/franchise-applications', formData, {
-        headers: {
-          'Accept': 'application/json'
+      const response = await axios.post(
+        "https://ishanib.demovoting.com/api/franchise-applications",
+        formData,
+        {
+          headers: {
+            Accept: "application/json",
+          },
         }
-      });
+      );
 
       console.log(response?.data);
       if (response.status >= 200 && response.status < 300) {
-        setSubmitStatus('success');
+        setSubmitStatus("success");
         setFormData({
-          first_name: '',
-          last_name: '',
-          email: '',
-          phone: '',
-          preferred_city: '',
-          investment_capacity: '10-20 lakhs',
-          business_experience: '',
-          consent_marketing: false
+          first_name: "",
+          last_name: "",
+          email: "",
+          phone: "",
+          preferred_city: "",
+          investment_capacity: "10-20 lakhs",
+          business_experience: "",
+          consent_marketing: false,
         });
       } else {
-        throw new Error(response.data?.message || 'Submission failed');
+        throw new Error(response.data?.message || "Submission failed");
       }
     } catch (err) {
       console.error(err);
-      setSubmitStatus('error');
+      setSubmitStatus("error");
 
       if (err.response) {
         // Server responded with a status code outside 2xx range
         if (err.response.data?.errors) {
           // Validation errors from server
           setSubmitError(
-            Object.values(err.response.data.errors).join(' ') ||
-            'Please check your input and try again.'
+            Object.values(err.response.data.errors).join(" ") ||
+              "Please check your input and try again."
           );
         } else {
           setSubmitError(
             err.response.data?.message ||
-            `Server error: ${err.response.status} - ${err.response.statusText}`
+              `Server error: ${err.response.status} - ${err.response.statusText}`
           );
         }
       } else if (err.request) {
         // Request was made but no response received
-        setSubmitError('Network error - please check your connection and try again.');
+        setSubmitError(
+          "Network error - please check your connection and try again."
+        );
       } else {
         // Something else happened
-        setSubmitError(err.message || 'An unexpected error occurred.');
+        setSubmitError(err.message || "An unexpected error occurred.");
       }
     }
   };
@@ -183,9 +185,6 @@ const FranchisePage = () => {
   //       </div>
   //     );
   //   }
-
-
-
 
   // const franchiseTestimonials = [
   //   {
@@ -236,7 +235,7 @@ const FranchisePage = () => {
         className="text-center mb-16"
       >
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          Ishani Enterprises Franchise Opportunities
+          Ishani Enterprises Partnership Opportunities
         </h1>
         <div className="w-24 h-1 bg-yellow-500 mx-auto"></div>
         <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
@@ -366,10 +365,10 @@ const FranchisePage = () => {
         <div className="max-w-6xl mx-auto">
           <motion.div variants={fadeIn("up", "spring", 0.2, 1)}>
             <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
-              Franchise Benefits & Support
+              Partnership Benefits & Support
             </h2>
             <p className="text-gray-600 mb-8 text-center max-w-3xl mx-auto">
-              We provide everything you need to succeed as an Ishani franchisee
+              We provide everything you need to succeed as an Ishani Partners
             </p>
           </motion.div>
 
@@ -383,7 +382,7 @@ const FranchisePage = () => {
             <motion.div variants={fadeIn("right", "spring", 0.3, 1)}>
               <div className="bg-white p-6 rounded-lg shadow-sm">
                 <h3 className="text-xl font-semibold mb-4 text-gray-800">
-                  Franchise Support
+                  Partnership Support
                 </h3>
                 {renderRichContent(franchiseSP?.benefits)}
               </div>
@@ -392,7 +391,7 @@ const FranchisePage = () => {
             <motion.div variants={fadeIn("left", "spring", 0.3, 1)}>
               <div className="bg-white p-6 rounded-lg shadow-sm">
                 <h3 className="text-xl font-semibold mb-4 text-gray-800">
-                  Financial Benefits
+                  Partnership Benefits
                 </h3>
                 {renderRichContent(franchiseSP?.support)}
               </div>
@@ -432,7 +431,7 @@ const FranchisePage = () => {
           </div>
           <p className="text-center text-gray-600 mt-6">
             Don't see your city? We're constantly expanding -{" "}
-            <Link to="#apply" className="text-yellow-600 hover:underline">
+            <Link to="/contactus" className="text-yellow-600 hover:underline">
               Apply anyway
             </Link>
           </p>
@@ -447,7 +446,7 @@ const FranchisePage = () => {
       >
         <div className="max-w-4xl mx-auto px-8">
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
-            What Our Franchisees Say
+            What Our Partners Say
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
             {testimonials.map((testimonial, index) => (
@@ -476,9 +475,7 @@ const FranchisePage = () => {
                 <p className="font-semibold text-gray-800">
                   {testimonial.name}
                 </p>
-                <p className="text-gray-500 text-sm">
-                  {testimonial.location}
-                </p>
+                <p className="text-gray-500 text-sm">{testimonial.location}</p>
               </motion.div>
             ))}
           </div>
@@ -494,10 +491,10 @@ const FranchisePage = () => {
       >
         <motion.div variants={fadeIn("up", "spring", 0.2, 1)}>
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
-            Franchise Application
+            Partnership Application
           </h2>
           <p className="text-gray-600 mb-8 text-center max-w-3xl mx-auto">
-            Take the first step towards owning an Ishani Enterprises franchise
+            Take the first step towards owning an Ishani Enterprises Partnership
           </p>
         </motion.div>
 
@@ -623,7 +620,7 @@ const FranchisePage = () => {
                   required
                 >
                   <option value="">Select range</option>
-                  <option value='10-20 lakhs'>₹10-20 Lakhs</option>
+                  <option value="10-20 lakhs">₹10-20 Lakhs</option>
                   <option value="20-30 lakhs">₹20-30 Lakhs</option>
                   <option value="30-40 lakhs">₹30-40 Lakhs</option>
                   <option value="40-50 lakhs">₹40-50 Lakhs</option>
@@ -662,74 +659,137 @@ const FranchisePage = () => {
                   />
                   <span className="text-sm text-gray-600">
                     I agree to receive more information about Ishani Enterprises
-                    franchise opportunities
+                    partnership opportunities
                   </span>
                 </label>
               </div>
 
               <button
                 type="submit"
-                disabled={submitStatus === 'submitting'}
-                className={`w-full bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-3 px-4 rounded-md transition-colors ${submitStatus === 'submitting' ? 'opacity-70 cursor-not-allowed' : ''
-                  }`}
+                disabled={submitStatus === "submitting"}
+                className={`w-full bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-3 px-4 rounded-md transition-colors ${
+                  submitStatus === "submitting"
+                    ? "opacity-70 cursor-not-allowed"
+                    : ""
+                }`}
               >
-                {submitStatus === 'submitting' ? (
+                {submitStatus === "submitting" ? (
                   <span className="flex items-center justify-center">
-                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    <svg
+                      className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
                     </svg>
                     Processing...
                   </span>
                 ) : (
-                  'Submit Franchise Application'
+                  "Submit Partnership Application"
                 )}
               </button>
             </form>
             {/* Form Submission Messages */}
             <div className="mt-4">
-              {submitStatus === 'submitting' && (
+              {submitStatus === "submitting" && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="flex items-center p-4 bg-blue-50 rounded-md"
                 >
-                  <svg className="w-5 h-5 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  <svg
+                    className="w-5 h-5 text-blue-500 mr-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
                   </svg>
-                  <span className="text-blue-700">Submitting your request...</span>
+                  <span className="text-blue-700">
+                    Submitting your request...
+                  </span>
                 </motion.div>
               )}
 
-              {submitStatus === 'success' && (
+              {submitStatus === "success" && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="flex items-center p-4 bg-green-50 rounded-md"
                 >
-                  <svg className="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  <svg
+                    className="w-5 h-5 text-green-500 mr-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 13l4 4L19 7"
+                    ></path>
                   </svg>
                   <div>
-                    <p className="font-medium text-green-700">Thank you for your application!</p>
-                    <p className="text-sm text-green-600 mt-1">We've received your franchise application and will contact you shortly.</p>
+                    <p className="font-medium text-green-700">
+                      Thank you for your application!
+                    </p>
+                    <p className="text-sm text-green-600 mt-1">
+                      We've received your partnership application and will
+                      contact you shortly.
+                    </p>
                   </div>
                 </motion.div>
               )}
 
-              {submitStatus === 'error' && (
+              {submitStatus === "error" && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="p-4 bg-red-50 rounded-md"
                 >
                   <div className="flex items-start">
-                    <svg className="w-5 h-5 text-red-500 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    <svg
+                      className="w-5 h-5 text-red-500 mr-3 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
                     </svg>
                     <div>
-                      <p className="font-medium text-red-700">There was an error submitting your form</p>
-                      <p className="text-sm text-red-600 mt-1">{submitError || 'Please try again later.'}</p>
+                      <p className="font-medium text-red-700">
+                        There was an error submitting your form
+                      </p>
+                      <p className="text-sm text-red-600 mt-1">
+                        {submitError || "Please try again later."}
+                      </p>
                       <button
                         onClick={() => setSubmitStatus(null)}
                         className="mt-2 text-sm font-medium text-red-600 hover:text-red-700 focus:outline-none"
@@ -770,7 +830,7 @@ const FranchisePage = () => {
                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
               />
             </svg>
-            Download Franchise Brochure
+            Download Partnership Brochure
           </a>
         </motion.div>
       </motion.section>

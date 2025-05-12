@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import ContentWrapper from "./ContentWrapper/ContentWrapper";
 import { navlogo } from "../../public/assets";
 
-const Navbar = ({categories}) => {
+const Navbar = ({ categories }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [hideTopBar, setHideTopBar] = useState(false);
@@ -24,69 +24,69 @@ const Navbar = ({categories}) => {
   }, []);
   console.log(categories);
   const generatePath = (name) => {
-    return name.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and');
+    return name.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and");
   };
-const navItems = [
-  { label: "HOME", path: "/" },
-  {
-    label: "ABOUT US",
-    submenu: [
-      { label: "Company Overview", path: "/aboutus#overview" },
-      { label: "Vision & Mission", path: "/aboutus#vision" },
-      { label: "Manufacturing Facility", path: "/aboutus#facility" },
-      { label: "Team / Leadership", path: "/aboutus#team" },
-    ],
-  },
-  {
-    label: "PRODUCTS",
-    submenu: [
-        ...(categories?.map(category => ({
+  const navItems = [
+    { label: "HOME", path: "/" },
+    {
+      label: "ABOUT US",
+      submenu: [
+        { label: "Company Overview", path: "/aboutus#overview" },
+        { label: "Vision & Mission", path: "/aboutus#vision" },
+        { label: "Manufacturing Facility", path: "/aboutus#facility" },
+        { label: "Team / Leadership", path: "/aboutus#team" },
+      ],
+    },
+    {
+      label: "PRODUCTS",
+      submenu: [
+        ...categories?.map((category) => ({
           label: category.name,
           path: `/products/${generatePath(category.name)}`,
-        }))),
-        { label: "All Products", path: "/products" }
-    ],
-  },
-  {
-    label: "PROJECTS",
-    // submenu: [
-    //   { label: "Residential Installations", path: "/gallery/residential" },
-    //   { label: "Commercial Projects", path: "/gallery/commercial" },
-    //   { label: "Before & After Showcase", path: "/gallery/showcase" },
-    // ],
-    path: "/projects",
-  },
-  {
-    label: "VISIT FACTORY OUTLET",
-    // submenu: [
-    //   { label: "Showroom Images", path: "/factory-outlet/showroom-images" },
-    //   { label: "Map & Directions", path: "/factory-outlet/map" },
-    //   { label: "Book a Visit", path: "/factory-outlet/book-visit" },
-    // ],
-    path: "/factory-outlet",
-  },
-  {
-    label: "FRANCHISE OPPORTUNITY",
-    // submenu: [
-    //   { label: "Why Partner with Us", path: "/franchise/why-partner" },
-    //   { label: "Franchise Benefits", path: "/franchise/benefits" },
-    //   { label: "Cities Available", path: "/franchise/cities" },
-    //   { label: "Apply Now", path: "/franchise/apply" },
-    // ],
-    path: "/ishani-franchise",
-  },
-  {
-    label: "BLOG",
-    // submenu: [
-    //   { label: "Design Tips", path: "/blog/design-tips" },
-    //   { label: "French Door Maintenance", path: "/blog/maintenance" },
-    //   { label: "Industry News", path: "/blog/news" },
-    //   { label: "FAQs", path: "/blog/faqs" },
-    // ],
-    path: "/blog",
-  },
-  { label: "CONTACT US", path: "/contactus" },
-];
+        })),
+        { label: "All Products", path: "/products" },
+      ],
+    },
+    {
+      label: "PROJECTS",
+      // submenu: [
+      //   { label: "Residential Installations", path: "/gallery/residential" },
+      //   { label: "Commercial Projects", path: "/gallery/commercial" },
+      //   { label: "Before & After Showcase", path: "/gallery/showcase" },
+      // ],
+      path: "/projects",
+    },
+    {
+      label: "VISIT FACTORY OUTLET",
+      // submenu: [
+      //   { label: "Showroom Images", path: "/factory-outlet/showroom-images" },
+      //   { label: "Map & Directions", path: "/factory-outlet/map" },
+      //   { label: "Book a Visit", path: "/factory-outlet/book-visit" },
+      // ],
+      path: "/factory-outlet",
+    },
+    {
+      label: "PARTNERSHIP OPPORTUNITY",
+      // submenu: [
+      //   { label: "Why Partner with Us", path: "/franchise/why-partner" },
+      //   { label: "Franchise Benefits", path: "/franchise/benefits" },
+      //   { label: "Cities Available", path: "/franchise/cities" },
+      //   { label: "Apply Now", path: "/franchise/apply" },
+      // ],
+      path: "/ishani-partnership",
+    },
+    {
+      label: "BLOG",
+      // submenu: [
+      //   { label: "Design Tips", path: "/blog/design-tips" },
+      //   { label: "French Door Maintenance", path: "/blog/maintenance" },
+      //   { label: "Industry News", path: "/blog/news" },
+      //   { label: "FAQs", path: "/blog/faqs" },
+      // ],
+      path: "/blog",
+    },
+    { label: "CONTACT US", path: "/contactus" },
+  ];
 
   return (
     <header className="relative z-[100]">
@@ -118,8 +118,6 @@ const navItems = [
                   />
                 </svg>
                 ishanient@gmail.com
-
-
               </a>
               <a
                 href="tel:+919053211211"
@@ -323,8 +321,6 @@ const navItems = [
                   />
                 </svg>
                 ishanient@gmail.com
-
-
               </a>
               <a
                 href="tel:+919053211211"
@@ -354,4 +350,4 @@ const navItems = [
   );
 };
 
-export default Navbar;
+export default Navbar;

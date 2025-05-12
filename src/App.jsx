@@ -24,7 +24,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/factory-outlet" element={<FactoryOutletPage />} />
-        <Route path="/ishani-franchise" element={<FranchiseOpportunity />} />
+        <Route path="/ishani-partnership" element={<FranchiseOpportunity />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/products/:category" element={<ProductsPage />} />
         <Route path="/contactus" element={<ContactUsPage />} />
