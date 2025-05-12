@@ -43,7 +43,6 @@ const Navbar = ({ categories }) => {
         ...categories?.map((category) => ({
           label: category.name,
           path: `/products/${generatePath(category.name)}`,
-<<<<<<< HEAD
         })),
         { label: "All Products", path: "/products" },
       ],
@@ -88,53 +87,6 @@ const Navbar = ({ categories }) => {
     },
     { label: "CONTACT US", path: "/contactus" },
   ];
-=======
-        }))),
-        { label: "All Products", path: "/products" }
-    ],
-  },
-  {
-    label: "PROJECTS",
-    // submenu: [
-    //   { label: "Residential Installations", path: "/gallery/residential" },
-    //   { label: "Commercial Projects", path: "/gallery/commercial" },
-    //   { label: "Before & After Showcase", path: "/gallery/showcase" },
-    // ],
-    path: "/projects",
-  },
-  {
-    label: "VISIT FACTORY OUTLET",
-    submenu: [
-      { label: "Showroom Images", path: "/factory-outlet/#showroom-images" },
-      { label: "Map & Directions", path: "/factory-outlet/#map" },
-      { label: "Book a Visit", path: "/factory-outlet/#book-visit" },
-     
-    ],
-    // path: "/factory-outlet",
-  },
-  {
-    label: "FRANCHISE OPPORTUNITY",
-    // submenu: [
-    //   { label: "Why Partner with Us", path: "/franchise/why-partner" },
-    //   { label: "Franchise Benefits", path: "/franchise/benefits" },
-    //   { label: "Cities Available", path: "/franchise/cities" },
-    //   { label: "Apply Now", path: "/franchise/apply" },
-    // ],
-    path: "/ishani-franchise",
-  },
-  {
-    label: "BLOG",
-    // submenu: [
-    //   { label: "Design Tips", path: "/blog/design-tips" },
-    //   { label: "French Door Maintenance", path: "/blog/maintenance" },
-    //   { label: "Industry News", path: "/blog/news" },
-    //   { label: "FAQs", path: "/blog/faqs" },
-    // ],
-    path: "/blog",
-  },
-  { label: "CONTACT US", path: "/contactus" },
-];
->>>>>>> 37a40376bb8f182dc73687122beaccd2b204c0f4
 
   return (
     <header className="relative z-[100]">

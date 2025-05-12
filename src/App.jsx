@@ -24,12 +24,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/factory-outlet" element={<FactoryOutletPage />} />
-<<<<<<< HEAD
         <Route path="/ishani-partnership" element={<FranchiseOpportunity />} />
-=======
-        <Route path="/factory-outlet/#book" element={<FactoryOutletPage />} />
-        <Route path="/ishani-franchise" element={<FranchiseOpportunity />} />
->>>>>>> 37a40376bb8f182dc73687122beaccd2b204c0f4
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/products/:category" element={<ProductsPage />} />
         <Route path="/contactus" element={<ContactUsPage />} />
