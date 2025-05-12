@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -9,6 +10,7 @@ const FactoryOutletPage = () => {
   const [galleryItems, setGalleryItems] = useState([]);
   const [contactItems, setContactItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
   const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
     full_name: '',
@@ -41,6 +43,19 @@ const FactoryOutletPage = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+        if (location.hash) {
+          const id = location.hash.replace("#", "");
+          const element = document.getElementById(id);
+          if (element) {
+            // Small timeout to ensure component has rendered
+            setTimeout(() => {
+              element.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 100);
+          }
+        }
+      }, [location]);
+
   const handleInputChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -53,15 +68,13 @@ const FactoryOutletPage = () => {
     setSubmitStatus('submitting');
     setSubmitError(null);
 
-
-
     try {
       const response = await axios.post('https://ishanib.demovoting.com/api/visit-requests', formData, {
         headers: {
           'Accept': 'application/json',
         },
       });
-      console.log(response?.data);
+      // console.log(response?.data);
       if (response.status >= 200 && response.status < 300) {
       setSubmitStatus('success');
       setFormData({
@@ -76,7 +89,7 @@ const FactoryOutletPage = () => {
         throw new Error(response.data?.message || 'Submission failed');
       }
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       setSubmitStatus('error');
 
       if (err.response) {
@@ -179,9 +192,9 @@ const FactoryOutletPage = () => {
         className="flex flex-wrap justify-center gap-4 mb-16"
       >
         {[
-          { label: "Showroom", path: "#showroom" },
-          { label: "Location", path: "#location" },
-          { label: "Book a Visit", path: "#booking" },
+          { label: "Showroom", path: "#showroom-images" },
+          { label: "Location", path: "#map" },
+          { label: "Book a Visit", path: "#book-visit" },
         ].map((item, index) => (
           <motion.div
             key={index}
@@ -199,7 +212,7 @@ const FactoryOutletPage = () => {
 
       {/* Showroom Section */}
       <motion.section
-        id="showroom"
+        id="showroom-images"
         className="mb-20 scroll-mt-20"
         variants={staggerContainer(0.1, 0.3)}
       >
@@ -240,7 +253,7 @@ const FactoryOutletPage = () => {
 
       {/* Location Section */}
       <motion.section
-        id="location"
+        id="map"
         className="mb-20 py-10 bg-gray-50 rounded-xl px-8 scroll-mt-20"
         variants={fadeIn("up", "spring", 0.3, 1)}
       >
@@ -378,7 +391,7 @@ const FactoryOutletPage = () => {
 
       {/* Booking Section */}
       <motion.section
-        id="booking"
+        id="book-visit"
         className="scroll-mt-20"
         variants={staggerContainer(0.1, 0.3)}
       >
@@ -393,6 +406,7 @@ const FactoryOutletPage = () => {
         </motion.div>
 
         <motion.div
+         
           className="bg-white rounded-xl shadow-md overflow-hidden max-w-4xl mx-auto"
           variants={fadeIn("up", "spring", 0.3, 1)}
         >
@@ -467,7 +481,7 @@ const FactoryOutletPage = () => {
               </ul>
             </div>
 
-            <div className="p-8 md:p-12">
+            <div  className="p-8 md:p-12">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label
@@ -480,7 +494,7 @@ const FactoryOutletPage = () => {
                     type="text"
                     id="name"
                     name="full_name"
-                    value={formData.full_name ?? ''}
+                    value={formData.full_name}
                     onChange={handleInputChange}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500"
                     required
@@ -498,7 +512,7 @@ const FactoryOutletPage = () => {
                     type="email"
                     id="email"
                     name="email"
-                    value={formData.email ?? ''}
+                    value={formData.email}
                     onChange={handleInputChange}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500"
                     required
@@ -516,7 +530,7 @@ const FactoryOutletPage = () => {
                     type="tel"
                     id="phone"
                     name="phone_number"
-                    value={formData.phone_number ?? ''}
+                    value={formData.phone_number}
                     onChange={handleInputChange}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500"
                     required
@@ -534,7 +548,7 @@ const FactoryOutletPage = () => {
                     type="date"
                     id="date"
                     name="preferred_date"
-                    value={formData.preferred_date ?? ''}
+                    value={formData.preferred_date}
                     onChange={handleInputChange}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500"
                     required
@@ -551,7 +565,7 @@ const FactoryOutletPage = () => {
                   <select
                     id="time"
                     name="preferred_time"
-                    value={formData.preferred_time ?? ''}
+                    value={formData.preferred_time}
                     onChange={handleInputChange}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500"
                     required
@@ -582,7 +596,7 @@ const FactoryOutletPage = () => {
                   <textarea
                     id="notes"
                     name="special_requests"
-                    value={formData.special_requests ?? ''}
+                    value={formData.special_requests}
                     onChange={handleInputChange}
                     rows={3}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-yellow-500 focus:border-yellow-500"

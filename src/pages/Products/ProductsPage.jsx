@@ -364,7 +364,7 @@ const CategoryBenefits = ({ category, categories }) => {
         {currentCategory?.benefits?.map((benefit, index) => (
           <div key={index} className="flex items-start">
             <div className="text-yellow-500 mr-3 mt-1">
-              {benefit.icon || "✓"}
+              {"✓"}
             </div>
             <div>
               <h4 className="font-medium text-gray-800">{benefit.title}</h4>
@@ -409,7 +409,7 @@ const ProductGrid = ({ filteredProducts, categories, categoryIcons }) => (
 // Component: Product Card
 const ProductCard = ({ product, categories, categoryIcons }) => {
   const category = categories.find(cat => cat.id === product.category_id);
-
+  const navigate = useNavigate();
   return (
     <motion.div
       variants={{
@@ -444,7 +444,7 @@ const ProductCard = ({ product, categories, categoryIcons }) => {
         )}
         <h3 className="text-xl font-bold text-gray-800 mb-2">{product.title}</h3>
         <p className="text-gray-600 mb-4">{product.description}</p>
-        <button className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded-lg transition">
+        <button onClick={()=>{navigate(`/contactus`)}} className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded-lg transition">
           Enquire Now
         </button>
       </div>
@@ -550,7 +550,9 @@ const FAQSection = ({ faqs, activeFAQ, toggleFAQ }) => (
 );
 
 // Component: CTA
-const CTASection = () => (
+const CTASection = () => {
+  const navigate = useNavigate();
+  return(
   <div className="mt-16 bg-yellow-50 rounded-xl p-8 text-center">
     <h3 className="text-2xl font-bold text-gray-800 mb-4">
       Ready to Transform Your Space?
@@ -562,15 +564,16 @@ const CTASection = () => (
       <a href="tel:+91905321121" className="flex items-center justify-center bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-3 px-6 rounded-lg transition">
         <FiPhone className="mr-2" /> Call Now
       </a>
-      <button className="flex items-center justify-center border border-yellow-500 text-yellow-600 hover:bg-yellow-50 font-medium py-3 px-6 rounded-lg transition">
+      <a href="https://wa.me/9422255572?text=Hello%20there!" className="flex items-center justify-center border border-yellow-500 text-yellow-600 hover:bg-yellow-50 font-medium py-3 px-6 rounded-lg transition">
         <FiMessageSquare className="mr-2" /> WhatsApp Us
-      </button>
-      <button className="flex items-center justify-center border border-yellow-500 text-yellow-600 hover:bg-yellow-50 font-medium py-3 px-6 rounded-lg transition">
+      </a>
+      <button onClick={() => navigate('/factory-outlet/#book-visit')} className="flex items-center justify-center border border-yellow-500 text-yellow-600 hover:bg-yellow-50 font-medium py-3 px-6 rounded-lg transition">
         <FiCalendar className="mr-2" /> Book Consultation
       </button>
     </div>
   </div>
-);
+  )
+};
 
 // Helper functions
 // function getCategoryDescription(category) {

@@ -106,11 +106,17 @@ const FranchiseHighlight = () => {
                   Maharashtra districts
                 </p>
               </div>
+<<<<<<< HEAD
               <a
                 onClick={() => {
                   navigate(`/ishani-partnership`);
                 }}
                 className="mt-6 md:mt-0 inline-flex items-center justify-center gap-2 bg-white text-yellow-700 hover:bg-gray-100 font-bold px-8 py-4 rounded-lg transition-all"
+=======
+              <motion.a
+                onClick={()=>{navigate(`/ishani-franchise`)}}
+                className="mt-6 md:mt-0 inline-flex items-center justify-center gap-2 bg-white text-yellow-700 hover:bg-gray-100 font-bold px-8 py-4 rounded-lg transition-all cursor-pointer"
+>>>>>>> 37a40376bb8f182dc73687122beaccd2b204c0f4
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
